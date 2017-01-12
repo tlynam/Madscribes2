@@ -2,11 +2,11 @@ defmodule Madscribes2.Sentence do
   use Madscribes2.Web, :model
 
   schema "sentences" do
-    field :user_id, :integer
-    field :story_id, :integer
+    belongs_to :user, Madscribes2.User
+    belongs_to :story, Madscribes2.Story
     field :body, :string
     field :round, :integer
-    field :votes, :integer
+    field :votes, {:array, :integer}
     field :winner, :boolean, default: false
 
     timestamps()

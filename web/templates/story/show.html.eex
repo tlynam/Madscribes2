@@ -41,3 +41,14 @@
 
 <%= link "Edit", to: story_path(@conn, :edit, @story) %>
 <%= link "Back", to: story_path(@conn, :index) %>
+
+<table>
+  <tbody>
+    <%= for sentence <- @story.sentences do %>
+        <tr>
+          <td><%= sentence.body %></td>
+          <td><%= sentence.user.email %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

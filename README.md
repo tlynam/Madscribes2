@@ -27,3 +27,7 @@ mix phoenix.server
 To run console: iex -S mix
 
 To run migration: mix ecto.migrate
+
+Drump schema: mix ecto.dump
+
+Run seed file: mix run priv/repo/seeds.exs

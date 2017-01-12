@@ -27,7 +27,7 @@ defmodule Madscribes2.StoryController do
   end
 
   def show(conn, %{"id" => id}) do
-    story = Repo.preload(Repo.get!(Story, id), [user: :subscriptions])
+    story = Repo.preload(Repo.get!(Story, id), [:user, :subscriptions, sentences: :user])
     render(conn, "show.html", story: story)
   end
 

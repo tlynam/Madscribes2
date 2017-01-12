@@ -11,6 +11,7 @@ defmodule Madscribes2.Story do
 
     belongs_to :user, Madscribes2.User
     has_many :subscriptions, Madscribes2.Subscription
+    has_many :sentences, Madscribes2.Sentence
 
     timestamps()
   end
