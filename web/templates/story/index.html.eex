@@ -1,0 +1,40 @@
+<h2>Listing stories</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>Body</th>
+      <th>Writing period</th>
+      <th>Voting period</th>
+      <th>Started at</th>
+      <th>Rounds</th>
+      <th>Subscriptions</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for story <- @stories do %>
+    <tr>
+      <td><%= story.title %></td>
+      <td><%= story.user.email %></td>
+      <td><%= story.body %></td>
+      <td><%= story.writing_period %></td>
+      <td><%= story.voting_period %></td>
+      <td><%= story.started_at %></td>
+      <td><%= story.rounds %></td>
+      <td><%= Enum.count(story.subscriptions) %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: story_path(@conn, :show, story), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: story_path(@conn, :edit, story), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: story_path(@conn, :delete, story), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New story", to: story_path(@conn, :new) %>
