@@ -31,3 +31,11 @@ To run migration: mix ecto.migrate
 Drump schema: mix ecto.dump
 
 Run seed file: mix run priv/repo/seeds.exs
+
+http://www.thisisnotajoke.com/blog/2015/09/serializing-ecto-changeset-errors-to-jsonapi-in-elixir.html
+http://phoenixframework.org/docs/overview
+https://hexdocs.pm/phoenix
+https://github.com/phoenixframework/phoenix
+http://groups.google.com/group/phoenix-talk
+http://webchat.freenode.net/?channels=elixir-lang
+https://twitter.com/elixirphoenix">@elixirphoenix

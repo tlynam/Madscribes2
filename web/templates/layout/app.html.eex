@@ -7,25 +7,31 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Madscribes2!</title>
+    <title>Madscribes</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
       <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if logged_in?(@conn) do %>
-              <li><%= current_user(@conn).email %></li>
-              <li><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
-            <% else %>
-              <li><%= link "Login",    to: "/login" %></li>
-              <li><%= link "Register", to: registration_path(@conn, :new) %></li>
-            <% end %>
-          </ul>
+        <nav role="navigation" class="navbar navbar-toggleable-md navbar-light bg-faded">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="/">Madscribes</a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <%= if logged_in?(@conn) do %>
+                <li class="nav-item"><%= current_user(@conn).email %></li>
+                <li class="nav-item"><%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "nav-link" %></li>
+              <% else %>
+                <li class="nav-item"><%= link "Login",    to: "/login", class: "nav-link" %></li>
+                <li class="nav-item"><%= link "Register", to: registration_path(@conn, :new), class: "nav-link" %></li>
+              <% end %>
+            </ul>
+          </div>
         </nav>
-        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -36,6 +42,8 @@
       </main>
 
     </div> <!-- /container -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

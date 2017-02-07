@@ -1,1 +1,26 @@
 /* This file is for your main application css. */
+.chat-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  max-height: 300px;
+}
+
+.chat-input {
+  width: 80%;
+  margin-right: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner img {
+  width: 100%;
+}
