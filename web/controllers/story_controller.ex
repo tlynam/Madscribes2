@@ -2,6 +2,7 @@ defmodule Madscribes2.StoryController do
   use Madscribes2.Web, :controller
 
   alias Madscribes2.Story
+  alias Madscribes2.Sentence
 
   def index(conn, _params) do
     stories = Repo.preload(Repo.all(Story), [:user, :subscriptions])
@@ -27,8 +28,10 @@ defmodule Madscribes2.StoryController do
   end
 
   def show(conn, %{"id" => id}) do
+    sentence_changeset = Sentence.changeset(%Sentence{}, %{"story_id" => id})
+
     story = Repo.preload(Repo.get!(Story, id), [:user, :subscriptions, sentences: :user])
-    render(conn, "show.html", story: story)
+    render(conn, "show.html", story: story, sentence_changeset: sentence_changeset)
   end
 
   def edit(conn, %{"id" => id}) do

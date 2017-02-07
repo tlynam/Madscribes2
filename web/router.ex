@@ -25,6 +25,7 @@ defmodule Madscribes2.Router do
     delete "/logout", SessionController, :delete
 
     resources "/stories", StoryController
+    resources "/sentences", SentenceController
   end
 
   # Other scopes may use custom stacks.

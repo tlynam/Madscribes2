@@ -42,13 +42,70 @@
 <%= link "Edit", to: story_path(@conn, :edit, @story) %>
 <%= link "Back", to: story_path(@conn, :index) %>
 
-<table>
-  <tbody>
-    <%= for sentence <- @story.sentences do %>
-        <tr>
-          <td><%= sentence.body %></td>
-          <td><%= sentence.user.email %></td>
-        </tr>
+<div class="page-header">
+  <h1>
+    <%= @story.title %><small> by <%= @story.user.email %></small>
+  </h1>
+
+  <div class="well">
+    <h4>
+      <%= @story.body %>
+    </h4>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Winning Sentences</h3>
+    </div>
+    <div class="panel-body">
+      <div class="sentence_container">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Round</th>
+                <th>Author</th>
+                <th>Votes</th>
+                <th>Sentence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= for sentence <- @story.sentences do %>
+                  <tr>
+                    <td><%= sentence.round %></td>
+                    <td><%= sentence.user.email %></td>
+                    <td><%= sentence.votes %></td>
+                    <td><%= sentence.body %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <div class="well action_well">
+    <%= form_for @sentence_changeset, sentence_path(@conn, :create), fn f -> %>
+      <h3>Submit a Sentence</h3>
+      <div class="form-group">
+        <%= label f, :body, class: "col-sm-1 control-label" %>
+        <div class="col-sm-11">
+          <%= text_input f, :body, class: "form-control" %>
+        </div>
+        <%= error_tag f, :title %>
+        <%= hidden_input f, :story_id %>
+      </div>
+      <div class="actions form-group">
+        <div class="col-sm-offset-1 col-sm-11">
+          <%= submit "Submit", class: "btn btn-primary" %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
