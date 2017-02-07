@@ -10,7 +10,7 @@ defmodule Madscribes2.RoomChannel do
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast! socket, "new_msg", %{body: body}
+    broadcast! socket, "new_msg", %{body: "#{socket.assigns.user.email}: #{body}"}
     {:noreply, socket}
   end
 

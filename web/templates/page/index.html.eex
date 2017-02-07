@@ -24,7 +24,7 @@
 </div>
 
 <%= if @current_user do %>
-  <%= @current_user.email %>
+  <%= tag :meta, name: "channel_token", content: Phoenix.Token.sign(@conn, "user", @current_user.id) %>
 <% end %>
 
 <%= link "Stories", to: story_path(@conn, :index) %>

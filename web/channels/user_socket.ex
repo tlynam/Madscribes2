@@ -1,5 +1,7 @@
 defmodule Madscribes2.UserSocket do
   use Phoenix.Socket
+  alias Madscribes2.Repo
+  alias Madscribes2.User
 
   ## Channels
   channel "room:*", Madscribes2.RoomChannel
@@ -19,8 +21,16 @@ defmodule Madscribes2.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+
+  def connect(%{"token" => token}, socket) do
+    # Max age of 2 weeks (1209600 seconds)
+    case Phoenix.Token.verify(socket, "user", token, max_age: 1209600) do
+      {:ok, user_id} ->
+        socket = assign(socket, :user, Repo.get!(User, user_id))
+        {:ok, socket}
+      {:error, _} ->
+        :error
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
