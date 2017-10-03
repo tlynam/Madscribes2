@@ -11,11 +11,12 @@ defmodule Madscribes2.PageController do
     # elem(conn.adapter, 1).streamid
 
     # TODO: get stream ID from `push`, then actually send the file
-    :cowboy_req.push("app.js", %{"content-type" => "text/plain", "a" => "B"}, elem(conn.adapter, 1))
+    :cowboy_req.push("/js/app.js", to_headers_map([{"content-type", "application/javascript"}]), elem(conn.adapter, 1))
+    # Plug.Conn.H2.push(conn, "/css/app.css", [{"accept", "text/css"}])
 
-    {:ok, pid} = StringIO.open("body{ color: red }")
+    # {:ok, pid} = StringIO.open("body{ color: red }")
 
-    :cowboy_req.stream_body(pid, :nofin, elem(conn.adapter, 1))
+    # :cowboy_req.stream_body(pid, :nofin, elem(conn.adapter, 1))
 
     render conn, "index.html", current_user: Session.current_user(conn)
   end

@@ -38,9 +38,9 @@ defmodule Madscribes2.Mixfile do
      {:gettext, "~> 0.11"},
      {:comeonin, "~> 1.0"},
      {:phoenix_cowboy2, github: "voicelayer/phoenix_cowboy2"},
-     {:ranch, github: "ninenines/ranch", ref: "1.3.0", override: true, manager: :rebar3},
-     {:cowlib, github: "ninenines/cowlib", ref: "master", override: true, manager: :rebar3},
-     {:cowboy, github: "ninenines/cowboy", ref: "2.0.0-pre.7", override: true, manager: :rebar3}]
+     {:ranch, "~> 1.4.0", override: true},
+     {:cowlib, github: "ninenines/cowlib", ref: "2.0.0-rc.1", override: true, manager: :rebar3},
+     {:cowboy, github: "ninenines/cowboy", override: true, manager: :rebar3}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
