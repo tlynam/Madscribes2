@@ -24,6 +24,11 @@ http://nithinbekal.com/posts/phoenix-authentication/
 ## Setup and Running
 mix phoenix.server
 
+To Debug:
+1) require IEx
+2) IEx.pry
+3) Start server: iex -S mix phoenix.server
+
 To run console: iex -S mix
 
 To run migration: mix ecto.migrate
@@ -33,9 +38,12 @@ Drump schema: mix ecto.dump
 Run seed file: mix run priv/repo/seeds.exs
 
 http://www.thisisnotajoke.com/blog/2015/09/serializing-ecto-changeset-errors-to-jsonapi-in-elixir.html
-http://phoenixframework.org/docs/overview
-https://hexdocs.pm/phoenix
-https://github.com/phoenixframework/phoenix
-http://groups.google.com/group/phoenix-talk
 http://webchat.freenode.net/?channels=elixir-lang
 https://twitter.com/elixirphoenix">@elixirphoenix
+
+Better error message from elixir/phoenix
+What datatype it's expecting
+Set up debug
+
+StringIO.open("foo")
+StringIO.read("foo")

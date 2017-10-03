@@ -12,14 +12,14 @@
     </ol>
 </div>
 
-<div class="col-sm-9">
+<div class="col-sm-12">
   <ul class="chat-list">
     <div class="messages"></div>
   </ul>
   <hr>
   <div class="form-inline">
-    <input class="chat-input form-control" type="text" placeholder="Send a message:"></input>
-    <button class="btn btn-primary">Submit</button>
+    <input class="chat-input form-control" placeholder="<%= chat_placeholder(@current_user) %>" <%= disable_input?(@current_user) %>></input>
+    <button class="btn btn-primary" <%= disable_input?(@current_user) %>>Submit</button>
   </div>
 </div>
 

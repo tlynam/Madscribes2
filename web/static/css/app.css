@@ -1,14 +1,14 @@
 /* This file is for your main application css. */
+.form-inline .form-control {
+  width: 80%;
+  margin-right: 10px;
+}
+
 .chat-list {
   margin: 0;
   padding: 0;
   overflow: auto;
   max-height: 300px;
-}
-
-.chat-input {
-  width: 80%;
-  margin-right: 10px;
 }
 
 ul {

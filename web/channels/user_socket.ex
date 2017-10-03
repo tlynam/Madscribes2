@@ -29,7 +29,7 @@ defmodule Madscribes2.UserSocket do
         socket = assign(socket, :user, Repo.get!(User, user_id))
         {:ok, socket}
       {:error, _} ->
-        :error
+        {:ok, socket}
     end
   end
 
